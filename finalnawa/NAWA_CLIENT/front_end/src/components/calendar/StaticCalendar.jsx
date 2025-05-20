@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { getApiUrl } from "../../config/api";
 
 const StaticCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -65,20 +66,20 @@ const StaticCalendar = () => {
       
       // Choose the appropriate endpoint based on user type
       if (!teacherLoggedIn && !adminLoggedIn && !studentLoggedIn) {
-        response = await axios.get("http://localhost:8000/get/notices");
+        response = await axios.get(getApiUrl("/get/notices"));
       } else if (teacherLoggedIn) {
         response = await axios.get(
-          "http://localhost:8000/get/notices/teachers",
+          getApiUrl("/get/notices/teachers"),
           { withCredentials: true }
         );
       } else if (adminLoggedIn) {
         response = await axios.get(
-          "http://localhost:8000/get/notices/admins",
+          getApiUrl("/get/notices/admins"),
           { withCredentials: true }
         );
       } else {
         response = await axios.get(
-          "http://localhost:8000/get/notices/students",
+          getApiUrl("/get/notices/students"),
           { withCredentials: true }
         );
       }
@@ -296,16 +297,16 @@ const StaticCalendar = () => {
     try {
       if (typeof attachment === 'string') {
         if (attachment.includes('public/')) {
-          return `http://localhost:8000/${attachment.split('public/')[1]}`;
+          return `${import.meta.env.VITE_API_URL}${attachment.split('public/')[1]}`;
         } else if (attachment.includes('/')) {
-          return `http://localhost:8000/${attachment.split('/').slice(-2).join('/')}`;
+          return `${import.meta.env.VITE_API_URL}${attachment.split('/').slice(-2).join('/')}`;
         }
-        return `http://localhost:8000/${attachment}`;
+        return `${import.meta.env.VITE_API_URL}${attachment}`;
       }
-      return `http://localhost:8000/uploads/${attachment}`;
+      return `${import.meta.env.VITE_API_URL}uploads/${attachment}`;
     } catch (err) {
       console.error("Error parsing attachment URL:", err);
-      return `http://localhost:8000/uploads/${attachment}`;
+      return `${import.meta.env.VITE_API_URL}uploads/${attachment}`;
     }
   };
 

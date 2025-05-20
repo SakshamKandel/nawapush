@@ -5,6 +5,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { getApiUrl } from "../../../config/api";
 
 const CreateAccountAdmin = () => {
     const navigate=useNavigate();
@@ -28,7 +29,7 @@ const CreateAccountAdmin = () => {
   const createAdmin = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/create/admin",
+        getApiUrl("/create/admin"),
         data,
         { withCredentials: true }
       );

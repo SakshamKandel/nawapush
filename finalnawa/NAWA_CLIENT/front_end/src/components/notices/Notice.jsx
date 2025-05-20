@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, Slide } from 'react-toastify';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { getApiUrl } from "../../config/api";
 
 const Notice = () => {
   const teacherLoggedIn = document.cookie.includes("teacherToken");
@@ -18,20 +19,20 @@ const Notice = () => {
       try {
         setLoading(true);
         if (!teacherLoggedIn && !adminLoggedIn && !studentLoggedIn) {
-          response = await axios.get("http://localhost:8000/get/notices");
+          response = await axios.get(getApiUrl("/get/notices"));
         } else if (teacherLoggedIn) {
           response = await axios.get(
-            "http://localhost:8000/get/notices/teachers",
+            getApiUrl("/get/notices/teachers"),
             { withCredentials: true }
           );
         } else if (adminLoggedIn) {
           response = await axios.get(
-            "http://localhost:8000/get/notices/admins",
+            getApiUrl("/get/notices/admins"),
             { withCredentials: true }
           );
         } else {
           response = await axios.get(
-            "http://localhost:8000/get/notices/students",
+            getApiUrl("/get/notices/students"),
             { withCredentials: true }
           );
         }
@@ -108,16 +109,16 @@ const Notice = () => {
     try {
       if (typeof attachment === 'string') {
         if (attachment.includes('public/')) {
-          return `http://localhost:8000/${attachment.split('public/')[1]}`;
+          return `${import.meta.env.VITE_API_URL}${attachment.split('public/')[1]}`;
         } else if (attachment.includes('/')) {
-          return `http://localhost:8000/${attachment.split('/').slice(-2).join('/')}`;
+          return `${import.meta.env.VITE_API_URL}${attachment.split('/').slice(-2).join('/')}`;
         }
-        return `http://localhost:8000/${attachment}`;
+        return `${import.meta.env.VITE_API_URL}${attachment}`;
       }
-      return `http://localhost:8000/uploads/${attachment}`;
+      return `${import.meta.env.VITE_API_URL}uploads/${attachment}`;
     } catch (err) {
       console.error("Error parsing attachment URL:", err);
-      return `http://localhost:8000/uploads/${attachment}`;
+      return `${import.meta.env.VITE_API_URL}uploads/${attachment}`;
     }
   };
   
@@ -149,7 +150,7 @@ const Notice = () => {
           onClick={async () => {
             toast.dismiss();
             try {
-              await axios.delete(`http://localhost:8000/admin/delete/notice/${noticeId}`, { withCredentials: true });
+              await axios.delete(getApiUrl(`/admin/delete/notice/${noticeId}`), { withCredentials: true });
               setNotices((prev) => prev.filter((n) => n._id !== noticeId));
               toast.success('Notice deleted successfully');
             } catch (error) {

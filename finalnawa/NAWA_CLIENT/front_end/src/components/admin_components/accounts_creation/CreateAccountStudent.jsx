@@ -6,6 +6,7 @@ import { faEye, faEyeSlash, faUserGraduate } from "@fortawesome/free-solid-svg-i
 import { useNavigate } from "react-router-dom";
 import NoAccess from "../../NoAccess";
 import { toast } from 'react-toastify';
+import { getApiUrl } from "../../../config/api";
 
 const CreateAccountStudent = () => {
   const adminLoggedIn = document.cookie.includes("adminToken");
@@ -30,7 +31,7 @@ const CreateAccountStudent = () => {
   const createStudent = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/create/student",
+        getApiUrl("/create/student"),
         data,
         { withCredentials: true }
       );

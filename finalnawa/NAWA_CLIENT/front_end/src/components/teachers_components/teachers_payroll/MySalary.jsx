@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { getApiUrl } from "../../../config/api";
 
 const months = [
   "Baishakh",
@@ -26,7 +27,7 @@ const MySalary = () => {
       setIsLoading(true);
       setError("");
       try {
-        const res = await axios.get("http://localhost:8000/api/teacher-payroll/mine", { withCredentials: true });
+        const res = await axios.get(getApiUrl("/api/teacher-payroll/mine"), { withCredentials: true });
         setSalaryRecord(res.data);
       } catch (err) {
         setError(err.response?.data?.message || err.message);

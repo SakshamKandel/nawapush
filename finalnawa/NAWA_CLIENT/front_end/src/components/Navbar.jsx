@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGraduationCap, FaMoneyBillWave, FaHistory, FaArchive, FaCalendarAlt } from 'react-icons/fa';
+import { getApiUrl } from "../config/api";
 
 const Navbar = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const Navbar = () => {
     try {
       setShowLogoutModal(false);
       const response = await axios.post(
-        "http://localhost:8000/logout",
+        getApiUrl("/logout"),
         {},
         { withCredentials: true }
       );

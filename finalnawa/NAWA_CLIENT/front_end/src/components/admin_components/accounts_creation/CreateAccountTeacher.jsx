@@ -6,6 +6,7 @@ import { faEye, faEyeSlash, faChalkboardTeacher } from "@fortawesome/free-solid-
 import { useNavigate } from "react-router-dom";
 import NoAccess from "../../NoAccess";
 import { toast } from 'react-toastify';
+import { getApiUrl } from "../../../config/api";
 
 const CreateAccountTeacher = () => {
   const adminLoggedIn = document.cookie.includes("adminToken");
@@ -35,7 +36,7 @@ const CreateAccountTeacher = () => {
         setShowConfirm(true);
         setConfirmAction(() => async () => {
           const response = await axios.post(
-            "http://localhost:8000/create/teacher",
+            getApiUrl("/create/teacher"),
             data,
             { withCredentials: true }
           );

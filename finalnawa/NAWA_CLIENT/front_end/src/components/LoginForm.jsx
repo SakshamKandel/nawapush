@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getApiUrl } from "../config/api";
 
 const LoginForm = () => {
   const [showPass, setshowPass] = useState(false);
@@ -28,7 +29,7 @@ const LoginForm = () => {
   
   const formBackendFunc = async (data) => {
     try {
-      const response = await axios.post("http://localhost:8000/login", data, {
+      const response = await axios.post(getApiUrl("/login"), data, {
         withCredentials: true,
       });
       toast.success(response.data.alertMsg || "Logged in successfully!");
