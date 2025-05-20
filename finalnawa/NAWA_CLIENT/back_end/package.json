@@ -8,8 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "prod": "NODE_ENV=production node index.js",
-    "build": "bash render-build.sh",
-    "postinstall": "npm run build"
+    "build": "bash render-build.sh"
   },
   "engines": {
     "node": ">=18.0.0"
