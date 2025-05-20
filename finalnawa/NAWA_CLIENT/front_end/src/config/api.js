@@ -4,7 +4,7 @@
  */
 
 // Get the API base URL from environment variables, with a fallback for local development
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://nawa-backend.onrender.com';
 
 // Default request configuration
 const DEFAULT_CONFIG = {
