@@ -5,10 +5,8 @@ configDotenv();
 
 const connectTo = async () => {
     try {
-        // Enhanced connection options for production
+        // Enhanced connection options for production (no deprecated options)
         const connectionOptions = {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
             serverSelectionTimeoutMS: 10000, // Increased timeout for production
             socketTimeoutMS: 45000,
             maxPoolSize: 50, // Increased pool size for production
