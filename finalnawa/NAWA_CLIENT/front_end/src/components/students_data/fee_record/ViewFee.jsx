@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import NoAccess from "../../NoAccess";
 import axios from "axios";
-import { PDFViewer } from "@react-pdf/renderer";
-import ReceiptPDF from "./ReceiptPDF";
+// import { PDFViewer } from "@react-pdf/renderer";
+// import ReceiptPDF from "./ReceiptPDF";
 import { toast } from 'react-toastify';
 
 const ViewFee = () => {
@@ -293,9 +293,7 @@ const ViewFee = () => {
           </div>
           
           <div className="h-[calc(100vh-8rem)] bg-gray-100 border-t border-gray-200">
-            <PDFViewer style={{width:"100%", height:"100%"}}>
-              <ReceiptPDF studentData={location.state.student} pdfdata={pdfdata} />
-            </PDFViewer>
+            {/* PDF Viewer */}
           </div>
         </div>
       )}

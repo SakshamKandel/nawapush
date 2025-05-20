@@ -41,7 +41,7 @@ const Notice = () => {
           const dateA = new Date(a.date || a.createdAt);
           const dateB = new Date(b.date || b.createdAt);
           return dateB - dateA;
-        }).reverse(); // If dates are the same, last-inserted will be on top
+        }); // Removed .reverse() to show most recent first
         console.log('Sorted Notices:', sortedNotices.map(n => n.date || n.createdAt));
         
         setNotices(sortedNotices);

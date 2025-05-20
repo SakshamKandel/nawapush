@@ -1,4 +1,4 @@
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+// import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({

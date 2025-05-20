@@ -1,4 +1,5 @@
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+// Entire file commented out to disable TeacherReceiptPDF due to base64-js error
+// import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({

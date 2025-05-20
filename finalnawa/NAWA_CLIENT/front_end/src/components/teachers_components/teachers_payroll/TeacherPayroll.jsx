@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import NoAccess from "../../NoAccess";
 import { toast } from 'react-toastify';
-import { PDFViewer } from "@react-pdf/renderer";
-import TeacherReceiptPDF from "./TeacherReceiptPDF";
+// import { PDFViewer } from "@react-pdf/renderer";
+// import TeacherReceiptPDF from "./TeacherReceiptPDF";
 
 const TeacherPayroll = () => {
   const adminLoggedIn = document.cookie.includes("adminToken");
@@ -510,12 +510,7 @@ const TeacherPayroll = () => {
             </div>
             
             <div className="h-[calc(100vh-8rem)] bg-gray-100 border-t border-gray-200">
-              <PDFViewer style={{width:"100%", height:"100%"}}>
-                <TeacherReceiptPDF 
-                  teacherData={teachers.find(t => t._id === selectedTeacherId) || {}} 
-                  pdfData={pdfData} 
-                />
-              </PDFViewer>
+              {/* PDF Viewer */}
             </div>
           </div>
         )}
