@@ -85,11 +85,6 @@ app.use(cookieParser());
 
 // Serve static files
 app.use(express.static("public/notice_files"));
-// If you want to serve frontend in production from the same server
-if (NODE_ENV === 'production') {
-  // Assuming front_end/dist is your build directory
-  app.use(express.static(path.join(__dirname, '../front_end/dist')));
-}
 
 //routes
 app.use("/",loginRoute);  //route for login before role distribution:
@@ -116,13 +111,6 @@ app.use('/', leaveManagementRoutes);  //route for leave management
 app.use('/', teacherNoticesRoutes);
 app.use("/remove-student", remove_student);  //route for removing students from admin's account
 app.use("/api/year-end", yearEndManagementRoutes);
-
-// Serve frontend for any other routes in production (SPA support)
-if (NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../front_end/dist/index.html'));
-  });
-}
 
 // Global error handler
 app.use((err, req, res, next) => {
