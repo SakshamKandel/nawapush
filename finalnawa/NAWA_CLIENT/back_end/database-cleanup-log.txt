@@ -1,0 +1,5 @@
+
+--- Database Cleanup 2025-05-19T12-57-23.302Z ---
+studenthistories: 16 documents, 0.0077 MB - Historical data that may not be needed anymore
+classfees: 0 documents, 0.0000 MB - Empty collection, while classstructurefees is used for fee structure
+------------------------

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+body{
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+}
+
+html, #root {
+    background-color: #f9f9f9;
+}
+
+/* Apply to common containers that might set their own background */
+.bg-gray-50, .bg-gray-100, .min-h-screen {
+    background-color: #f9f9f9 !important;
+}
+
+/* Font weight adjustments for Poppins */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+button, .font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+input, select, textarea {
+    font-family: "Poppins", sans-serif;
+}

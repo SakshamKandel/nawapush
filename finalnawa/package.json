@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "node-fetch": "^2.7.0",
+    "react-icons": "^5.5.0",
+    "react-toastify": "^11.0.5"
+  }
+}
